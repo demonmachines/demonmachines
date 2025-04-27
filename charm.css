@@ -1,0 +1,16 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent scrollbars */
+    height: 100%;
+    width: 100%;
+}
+
+canvas {
+    display: block; /* Removes extra space that inline elements cause */
+}
+
+
+canvas {
+    background-color: whitesmoke;
+}
