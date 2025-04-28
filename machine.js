@@ -54,7 +54,7 @@ try {
     }
     // Circle Class
     class Circle {
-        constructor(x, y, dx, dy, radius, color, mouseZone, imageUrl) {
+        constructor(x, y, dx, dy, radius, color, mouseZone, mass, imageUrl) {
             this.x = x;
             this.y = y;
             this.velocity = { x: dx, y: dy };
@@ -62,7 +62,7 @@ try {
             this.minRadius = radius;
             this.color = color;
             this.mouseZone = mouseZone;
-            this.mass = 50;
+            this.mass = mass;
             // If an image URL is provided, load the image
             if (imageUrl) {
                 this.image = new Image();
@@ -126,14 +126,14 @@ try {
     // Creating main center circle (fixed position) with image
     let x_deadcenter = window.innerWidth / 2;
     let y_deadcenter = window.innerHeight / 2;
-    let main_circle = new Circle(x_deadcenter, y_deadcenter, 0, 0, 80, "black", 0, "./me_zero_square.png"); // Add your image path
+    let main_circle = new Circle(x_deadcenter, y_deadcenter, 0, 0, 30, "#333", 0, 8); // Add your image path
     // Add main circle to the array of circles
     circlesArr.push(main_circle);
     // Function to initialize the moving circles
     function init() {
         circlesArr = [];
         circlesArr.push(main_circle);
-        for (let i = 0; i < 150; i++) {
+        for (let i = 0; i < 300; i++) {
             const radius = 8;
             let x = Math.random() * (window.innerWidth - radius * 2) + radius;
             let y = Math.random() * (window.innerHeight - radius * 2) + radius;
@@ -141,6 +141,7 @@ try {
             const dy = (Math.random() + 0.5) * 2;
             const color = `#${randomElement(colors)}`;
             const mouseZone = 50;
+            let mass = 5;
             if (i !== 0) {
                 for (let j = 0; j < circlesArr.length; j++) {
                     if (distance(x, y, circlesArr[j].x, circlesArr[j].y) - radius * 2 < 0) {
@@ -150,7 +151,7 @@ try {
                     }
                 }
             }
-            circlesArr.push(new Circle(x, y, dx, dy, radius, color, mouseZone));
+            circlesArr.push(new Circle(x, y, dx, dy, radius, color, mouseZone, mass));
         }
     }
     // Main animation loop
