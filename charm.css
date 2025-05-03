@@ -50,6 +50,7 @@ header > img {
   width: clamp(200px, 50%, 500px);
   height: auto;
   border: 8px solid #333;
+  padding: 8px;
   border-radius: 50%;
 }
 
